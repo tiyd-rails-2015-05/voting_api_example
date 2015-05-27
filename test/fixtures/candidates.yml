@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  race_id: 1
+  name: MyString
+  hometown_at: MyString
+  district_at: MyString
+  party: MyString
+
+two:
+  race_id: 1
+  name: MyString
+  hometown_at: MyString
+  district_at: MyString
+  party: MyString
