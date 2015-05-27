@@ -1,7 +1,17 @@
 require 'test_helper'
 
 class VoterTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  test "voters exist and need parameters" do
+    voter =  Voter.new
+    refute voter.save
+  end
+
+  test "voters build cirrectly and must have all parameters" do
+    voter_one = Voter.new(name: "Bobby Jenkins", party: "NWO")
+    voter_two = Voter.new(pary: "Freedom Fighter")
+    assert voter_one.save
+    refute voter_two.save
+    assert_equal "NWO", voter_one.party
+  end
 end
