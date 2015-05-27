@@ -7,11 +7,14 @@ class VoterTest < ActiveSupport::TestCase
     refute voter.save
   end
 
-  test "voters build cirrectly and must have all parameters" do
+  test "voters build correctly and must have all parameters" do
     voter_one = Voter.new(name: "Bobby Jenkins", party: "NWO")
-    voter_two = Voter.new(pary: "Freedom Fighter")
+    voter_two = Voter.new(party: "Freedom Fighter")
     assert voter_one.save
-    refute voter_two.save
+    assert_raises(ActiveRecord::RecordInvalid) do
+     voter_two.save!
+    end
     assert_equal "NWO", voter_one.party
   end
+
 end

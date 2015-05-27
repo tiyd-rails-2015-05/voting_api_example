@@ -7,9 +7,10 @@ class RaceTest < ActiveSupport::TestCase
     refute race.save
   end
 
-  test "race builds correctly and must have all parameters"
-    race_one = race.new(name: "skull&bones Headmaster inagurals")
+  test "race builds correctly and must have all parameters" do
+    race_one = Race.new(name: "skull&bones Headmaster inagurals")
     assert race_one.save
     assert_equal "skull&bones Headmaster inagurals", race_one.name
   end
+
 end
