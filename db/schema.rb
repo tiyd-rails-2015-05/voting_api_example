@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150527054236) do
   end
 
   create_table "voters", force: :cascade do |t|
+    t.string   "token"
     t.string   "name"
     t.string   "party"
     t.datetime "created_at", null: false

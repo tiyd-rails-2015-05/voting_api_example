@@ -9,13 +9,14 @@ class CandidatesController < ApplicationController
 
   def create
     liar = Candidate.new(race_id: params[:race_id], name: params[:name],
-                        hometown_at: params[:hometown_at], party: params[:party],
-                        district_at: params[:district_at])
-    if liar.save
-      render json: liar
-    else
-      render json: "Ohh Nooo what ever could have went wrong?"
-    end
+                         hometown_at: params[:hometown_at], party: params[:party],
+                         district_at: params[:district_at])
+    liar.save ? (render json: liar) : (render json: liar.errors)
+  end
+
+  def destroy
+    Candidate.delete(params[:id])
+    render json: "Candidate has been deleted! That'll teach him to not be corrupt."
   end
 
 end
