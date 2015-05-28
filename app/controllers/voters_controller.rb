@@ -1,6 +1,6 @@
 class VotersController < ApplicationController
   def create
-    voter = Voter.new(token: params[:token], name: params[:name],
+    voter = Voter.new(name: params[:name],
                       party: params[:party])
     voter.save ? (render json: voter) : (render json: voter.errors)
   end
@@ -10,7 +10,12 @@ class VotersController < ApplicationController
   end
 
   def show
-    render json: Voter.find_by_id(params[:id])
+    voter = Voter.find_by_id(params[:id])
+    if voter.token == params[:token]
+      render json: voter
+    else
+      render json: "invalid token"
+    end
   end
 
   def destroy

@@ -1,10 +1,10 @@
 class CandidatesController < ApplicationController
   def index
-    render json: Candidate.all
+    @candidates = Candidate.all
   end
 
   def show
-    render json: Candidate.find_by_id(params[:id])
+    @candidate = Candidate.find_by_id(params[:id])
   end
 
   def create
@@ -15,8 +15,13 @@ class CandidatesController < ApplicationController
   end
 
   def destroy
-    Candidate.delete(params[:id])
-    render json: "Candidate has been deleted! That'll teach him to not be corrupt."
+    candidate = Candidate.find_by_id(params[:id])
+    if candidate
+      candidate.destroy
+      render json: "Candidate has been deleted! That'll teach him to not be corrupt."
+    else
+      render json: "No candidate found."
+    end
   end
 
 end

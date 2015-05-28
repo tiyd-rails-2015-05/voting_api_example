@@ -1,15 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  race_id: 1
-  name: MyString
-  hometown_at: MyString
-  district_at: MyString
-  party: MyString
+bob:
+  name: Bob
+  hometown_at: Durham
+  district_at: Durham
+  party: NWO
 
-two:
-  race_id: 1
-  name: MyString
-  hometown_at: MyString
-  district_at: MyString
-  party: MyString
+kay:
+  name: Kay
+  hometown_at: Raleigh
+  district_at: Raleigh
+  party: Democrat

@@ -4,6 +4,7 @@ class CreateVoters < ActiveRecord::Migration
       t.string :token
       t.string :name
       t.string :party
+      t.string :username
 
       t.timestamps null: false
     end

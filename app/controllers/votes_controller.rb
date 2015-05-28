@@ -6,7 +6,7 @@ class VotesController < ApplicationController
   end
 
   def index
-    render json: Vote.all
+    render json: Candidate.all
   end
 
   def destroy

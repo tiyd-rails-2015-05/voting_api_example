@@ -7,19 +7,22 @@ class CandidatesControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    Candidate.new(race_id: 1, name: "Mr.Rothschild",
-    hometown_at: "London", district_at: "Entire World", party: "NWO")
-    get :show
+    get :show, id: candidates(:kay).id
     assert_response :success
   end
 
   test "should post create" do
-    get :create
+    post :create
     assert_response :success
   end
 
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
+  test "should fail to destroy" do
+    delete :destroy
+    assert response.body =~ /No candidate found/
+  end
+
+  test "should destroy" do
+    delete :destroy, id: candidates(:bob).id
+    assert response.body =~ /corrupt/
   end
 end
